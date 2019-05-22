@@ -21,31 +21,48 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   int _currentIndex = 0;
   List<Widget> screenList = List();
 
-  BottomNavigationBarItem createBottomBarItem(String iconName, String title, double width, double height) {
+
+  BottomNavigationBarItem createBottomBarItem(String iconName, String title, double width, double height, int index) {
     return new BottomNavigationBarItem(
-      icon: new Container(
-        width: width,
-        height: height,
-//        color: Constant.themeColor,
-        child: new Image.asset(iconName),
-      ),
+      icon: getContainerStyle(iconName, title, width, height, index),
       title: new Text(title)
     );
   }
 
+  Container getContainerStyle(String iconName, String title, double width, double height,int index) {
+    if(_currentIndex == index) {
+      return new Container(
+        width: width,
+        height: height,
+        child: new CircleAvatar(
+          child: Image.asset(iconName,color: Colors.white,width: width - 10, height: height - 10,),
+          backgroundColor: Constant.themeColor,
+        ),
+      );
+    } else {
+      return new Container(
+        width: width,
+        height: height,
+        child: Image.asset(iconName),
+      );
+    }
+  }
+
   List<BottomNavigationBarItem> createItems () {
     List<BottomNavigationBarItem> itemsss = List();
+    double TabbarItemW = ScreenUtil.instance.setWidth(34);
     itemsss
-      ..add(createBottomBarItem('images/discovery_normal.png', '发现', 30, 30))
-      ..add(createBottomBarItem('images/video_normal.png', '视频', 30, 30))
-      ..add(createBottomBarItem('images/music_normal.png', '我的', 30, 30))
-      ..add(createBottomBarItem('images/friend_normal.png', '朋友', 30, 30))
-      ..add(createBottomBarItem('images/account_normal.png', '账号', 30, 30));
+      ..add(createBottomBarItem('images/discovery_normal.png', '发现', TabbarItemW, TabbarItemW, 0))
+      ..add(createBottomBarItem('images/video_normal.png', '视频', TabbarItemW, TabbarItemW, 1))
+      ..add(createBottomBarItem('images/music_normal.png', '我的', TabbarItemW, TabbarItemW, 2))
+      ..add(createBottomBarItem('images/friend_normal.png', '朋友', TabbarItemW, TabbarItemW, 3))
+      ..add(createBottomBarItem('images/account_normal.png', '账号', TabbarItemW, TabbarItemW, 4));
     return itemsss;
   }
 
   void _selectItem(int index) {
     setState(() {
+
       _currentIndex = index;
     });
   }
@@ -66,7 +83,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   Widget build(BuildContext context) {
     // 适配
     //设置适配尺寸 (填入设计稿中设备的屏幕尺寸)
-    ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
+    ScreenUtil.instance = ScreenUtil(width: 375, height: 667)..init(context);
     print('设备宽度:${ScreenUtil.screenWidth}');
     print('设备高度:${ScreenUtil.screenHeight}');
     print('设备的像素密度:${ScreenUtil.pixelRatio}');
@@ -84,6 +101,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
         selectedItemColor: Constant.themeColor,
         unselectedItemColor: Colors.black38,
         currentIndex: _currentIndex,
+//        fixedColor: Constant.themeColor,
         onTap: _selectItem,
         items: createItems(),
         type: BottomNavigationBarType.fixed,
