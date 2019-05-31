@@ -2,15 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neteasecloudmusic/utils/http_util.dart';
 import 'package:flutter_neteasecloudmusic/common/api.dart';
 import 'package:flutter_neteasecloudmusic/modules/discovery/model/banner_model.dart';
+import 'package:flutter_neteasecloudmusic/utils/utils.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_neteasecloudmusic/utils/route_util.dart';
+import 'package:flutter_neteasecloudmusic/utils/imageAnima_util.dart';
 
 class Discovery_screen extends StatelessWidget{
+
+  List<String> listImage = [
+    'images/play_loading1.png',
+    'images/play_loading2.png',
+    'images/play_loading3.png',
+    'images/play_loading4.png',
+  ];
+
+  Map<int, Image> imageMap = {0: Image.asset(Utils.getImgPath('play_loading1')),1: Image.asset(Utils.getImgPath('play_loading2')),2:Image.asset(Utils.getImgPath('play_loading3')),3:Image.asset(Utils.getImgPath('play_loading4'))};
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: HomeDrawer(),
+
+//      drawer: HomeDrawer(),
       appBar: AppBar(
-        title: Text('Discovery_screen'),
+        leading: new IconButton(
+          icon: Image.asset(Utils.getImgPath('nav_icn_mic'),fit: BoxFit.fill,height: 34,width: 34,),
+          onPressed: () {
+            RouteUtil.routeListenSongs_screen(context);
+          }),
+        actions: <Widget>[
+          new IconButton(
+            icon: ImagesAnim(imageMap, 32,32,Colors.white),
+            padding: EdgeInsets.fromLTRB(0, 8, 10, 0),
+            onPressed: null,
+          )
+        ],
       ),
       body: DiscoveryPage(title: 'Discovery'),
     );

@@ -4,6 +4,7 @@ import 'package:flutter_neteasecloudmusic/modules/discovery/discovery_screen.dar
 import 'package:flutter_neteasecloudmusic/modules/friend/friend_screen.dart';
 import 'package:flutter_neteasecloudmusic/modules/my/my_screen.dart';
 import 'package:flutter_neteasecloudmusic/test/testScreenPage.dart';
+import 'package:flutter_neteasecloudmusic/modules/discovery/listenSongs_screen.dart';
 
 class RouteUtil {
 
@@ -42,6 +43,24 @@ class RouteUtil {
         },
         transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
           return createTransition(animation, child);
+        },
+        opaque: false,
+      ),
+    );
+  }
+
+  // 跳转到TestScreen页面， 并传入index值
+  static routeListenSongs_screen(BuildContext context) {
+    Navigator.of(context).push(
+      new PageRouteBuilder(
+        pageBuilder: (BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation) {
+          // 跳转的路由对象
+          return new ListenSongs_screen();
+        },
+        transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+          return createOpacityTransition(animation, child);
         },
         opaque: false,
       ),

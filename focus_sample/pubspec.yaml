@@ -1,5 +1,5 @@
-name: flutter_neteasecloudmusic
-description: A new Flutter application.
+name: focus_sample
+description: Focus Sample Project
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -23,23 +23,14 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
-  # 约束
-  flutter_screenutil: ^0.5.2
-  # 请求
-  dio: 2.1.3
-  # json序列化
-  json_annotation: ^2.3.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  build_runner: ^1.4.0
-  json_serializable: ^2.3.0
-
 
 # For information on the generic Dart part of this file, see the
-# following page: https://www.dartlang.org/tools/pub/pubspec
+# following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
@@ -48,22 +39,6 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-  assets:
-    - images/zz.jpg
-    - images/lf.jpg
-    - images/kks.jpg
-    - images/icon_circle.png
-    - images/icon_wx.png
-    - images/account_normal.png
-    - images/discovery_normal.png
-    - images/music_normal.png
-    - images/friend_normal.png
-    - images/video_normal.png
-    - images/nav_icn_mic.png
-    - images/play_loading1.png
-    - images/play_loading2.png
-    - images/play_loading3.png
-    - images/play_loading4.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

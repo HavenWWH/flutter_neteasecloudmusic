@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'modules/main/bottom_navigation_widget.dart';
+import 'package:flutter_neteasecloudmusic/common/constant.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter HavenOneApp',
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+        primaryColor: Colors.white,
       ),
       home: BottomNavigationWidget(),
     );
